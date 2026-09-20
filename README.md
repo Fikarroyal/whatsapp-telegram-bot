@@ -1,6 +1,4 @@
-# 🤖 Asisten Harian — Bot WhatsApp & Telegram
-
-Satu bot, banyak kebutuhan harian. Logikanya ditulis sekali (`core.py`) dan bisa dipakai lewat **WhatsApp** atau **Telegram**.
+# Asisten Harian Bot WhatsApp & Telegram
 
 | Fitur | Isi |
 |---|---|
@@ -11,7 +9,6 @@ Satu bot, banyak kebutuhan harian. Logikanya ditulis sekali (`core.py`) dan bisa
 | 😴 Tidur | Pengingat tidur + hitungan durasi tidur sampai alarm |
 | ⏰ Alarm | Alarm bangun pagi yang mengulang sampai kamu membalas `bangun`, lalu langsung memberi ringkasan pagi |
 
----
 
 ## 1. Isi folder
 
@@ -26,7 +23,6 @@ Satu bot, banyak kebutuhan harian. Logikanya ditulis sekali (`core.py`) dan bisa
 
 Butuh **Python 3.9+**. Data tersimpan di `botdata.db` (SQLite) di folder tempat bot dijalankan.
 
----
 
 ## 2. Perintah
 
@@ -46,7 +42,7 @@ Di WhatsApp ketik langsung (tanpa `/`). Di Telegram, `/` di depan boleh dipakai 
 | `cuaca` / `cuaca Surabaya` | Kondisi + penilaian baik/buruk + saran |
 | `cuaca on 06:30` | Kabar cuaca otomatis tiap hari jam 06:30 (`cuaca off` untuk mematikan) |
 
-**Keuangan** — cukup chat biasa
+**Keuangan**
 | Ketik | Hasil |
 |---|---|
 | `25rb makan siang` | Pengeluaran Rp25.000 (kategori otomatis) |
@@ -78,14 +74,13 @@ Untuk memulai dengan saldo awal, catat sebagai pemasukan: `masuk 2jt saldo awal`
 
 **Lainnya:** `menu` (bantuan), `status` (semua pengaturanmu).
 
----
 
 ## 3. Pasang di WhatsApp (Meta Cloud API)
 
 ### 3.1 Siapkan di Meta
 1. Buka <https://developers.facebook.com>, login, **Create App** → tipe **Business** → tambahkan produk **WhatsApp**.
 2. Di *WhatsApp → API Setup* catat **Phone Number ID** dan **Temporary access token**. Meta menyediakan nomor tes gratis.
-3. Di bagian *To*, tambahkan nomor WhatsApp-mu sebagai penerima tes (akan diminta kode verifikasi).
+3. Di bagian *To*, tambahkan nomor WhatsAppmu sebagai penerima tes (akan diminta kode verifikasi).
 4. Untuk memakai app-secret verifikasi (disarankan): *App settings → Basic → App secret*.
 
 ### 3.2 Jalankan bot
@@ -108,9 +103,9 @@ Jalankan **satu proses saja** (penjadwal pengingat ada di dalam proses yang sama
    - **Callback URL**: `https://xxxx.ngrok-free.app/webhook`
    - **Verify token**: sama persis dengan `WA_VERIFY_TOKEN`
 3. Klik **Verify and save**, lalu **Manage** → centang **messages** → Subscribe.
-4. Dari WhatsApp-mu, kirim `menu` ke nomor tes. 🎉
+4. Dari WhatsApp-mu, kirim `menu` ke nomor tes.
 
-### 3.4 ⚠️ Penting: pengingat di WhatsApp punya batas 24 jam
+### 3.4 Pengingat di WhatsApp punya batas 24 jam
 WhatsApp hanya mengizinkan bot mengirim pesan bebas **dalam 24 jam setelah kamu terakhir membalas**. Selama kamu chat dengan bot setidaknya sekali sehari, semua pengingat berjalan normal. Kalau lebih dari 24 jam kamu diam, Meta menolak pesan bebas (kode error 131047).
 
 Solusinya: **template pesan**. Bot otomatis beralih ke template saat kena batas itu, kalau kamu mengisi `WA_TEMPLATE_NAME`.
@@ -132,7 +127,6 @@ Catatan: pesan template yang dikirim bisnis bisa **dikenai biaya** menurut tarif
 - Untuk dipakai orang lain, daftarkan nomor telepon khusus untuk bot dan lengkapi verifikasi bisnis di Meta.
 - Versi Graph API bisa diganti dengan `WA_GRAPH_VERSION` (default `v23.0`) kalau Meta mempensiunkan versi lama.
 
----
 
 ## 4. Pasang di Telegram
 1. Chat **@BotFather** → `/newbot` → salin **token**.
@@ -141,9 +135,8 @@ Catatan: pesan template yang dikirim bisnis bisa **dikenai biaya** menurut tarif
    export TELEGRAM_TOKEN="token"      # Windows: set TELEGRAM_TOKEN=token
    python bot.py
    ```
-3. Buka bot-mu di Telegram, kirim `/start`. Tidak butuh domain, HTTPS, atau webhook.
+3. Buka botmu di Telegram, kirim `/start`. Tidak butuh domain, HTTPS, atau webhook.
 
----
 
 ## 5. Cara kerja pengingat
 - Penjadwal berjalan **tiap menit**. Setiap pengingat punya toleransi 5 menit kalau bot sempat telat/mati sebentar.
@@ -153,7 +146,6 @@ Catatan: pesan template yang dikirim bisnis bisa **dikenai biaya** menurut tarif
 - Setelah Isya, "sholat berikutnya" memakai jam Subuh hari ini sebagai perkiraan Subuh besok (selisihnya biasanya hanya ±1 menit).
 - Penilaian cuaca memakai kondisi saat ini: badai/hujan lebat/angin ≥50 km/jam/terasa ≥42°C = **buruk**; hujan ringan, gerimis, kabut, angin ≥30 km/jam, terasa ≥38°C, atau sedang ada curah hujan = **kurang baik**; selain itu **baik** (plus peringatan bila peluang hujan hari ini ≥50%).
 
----
 
 ## 6. Menjalankan 24 jam
 Bot harus terus menyala agar pengingat jalan. Pilihan umum:
@@ -162,7 +154,6 @@ Bot harus terus menyala agar pengingat jalan. Pilihan umum:
 
 Cadangkan `botdata.db` secara berkala; isinya seluruh catatan keuanganmu.
 
----
 
 ## 7. Pengujian
 ```bash
@@ -174,7 +165,6 @@ Yang diuji: seluruh parser angka dan jam, alur keuangan (saldo, kategori, hapus,
 
 **Belum bisa diuji dari sini:** koneksi langsung ke server Meta/Telegram dan API cuaca/sholat sungguhan, karena butuh token akunmu dan jaringan bebas. Karena itu langkah pertama setelah dipasang adalah tes cepat: kirim `menu`, `sholat`, `cuaca`, `25rb kopi`, `saldo`, lalu `alarm on <jam 2 menit dari sekarang>`.
 
----
 
 ## 8. Troubleshooting
 | Gejala | Penyebab & solusi |
@@ -187,10 +177,3 @@ Yang diuji: seluruh parser angka dan jam, alur keuangan (saldo, kategori, hapus,
 | Error `ZoneInfoNotFoundError` di Windows | `pip install tzdata` (sudah ada di requirements) |
 | Pengingat telat/tidak muncul | Cek bot masih berjalan; cek `status`; pastikan hanya **satu** proses bot yang aktif |
 | Jadwal sholat beda 1–2 menit dari masjid | Aladhan memakai perhitungan Kemenag tanpa *ihtiyath*; masjid sering menambah beberapa menit. Sesuaikan kebiasaan lokalmu |
-
----
-
-## 9. Keamanan
-- Jangan menaruh token di kode atau mengunggahnya ke GitHub. Pakai environment variable.
-- Isi `WA_APP_SECRET` supaya hanya permintaan asli dari Meta yang diproses.
-- Data pengguna disimpan lokal di `botdata.db` dan tidak dikirim ke pihak lain selain kota yang dikirim ke Aladhan/Open-Meteo untuk jadwal dan cuaca.
