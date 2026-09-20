@@ -2,12 +2,12 @@
 
 | Fitur | Isi |
 |---|---|
-| 🕌 Sholat | Jadwal Kemenag RI, pengingat tiap waktu sholat, pengingat *N menit sebelum* waktu sholat, info sholat berikutnya + hitung mundur |
-| 🌤 Cuaca | Kondisi saat ini + penilaian **baik / kurang baik / buruk** beserta saran (payung, panas, angin, badai), kabar cuaca otomatis tiap pagi |
-| 💰 Keuangan | Pemasukan & pengeluaran tercatat otomatis dari chat biasa, kategori otomatis, saldo, rekap harian/bulanan, riwayat |
-| 📋 Tugas | Tugas sekali jalan atau harian, pengingat pada jam tertentu, ringkasan agenda tiap pagi |
-| 😴 Tidur | Pengingat tidur + hitungan durasi tidur sampai alarm |
-| ⏰ Alarm | Alarm bangun pagi yang mengulang sampai kamu membalas `bangun`, lalu langsung memberi ringkasan pagi |
+| Sholat | Jadwal Kemenag RI, pengingat tiap waktu sholat, pengingat *N menit sebelum* waktu sholat, info sholat berikutnya + hitung mundur |
+| Cuaca | Kondisi saat ini + penilaian **baik / kurang baik / buruk** beserta saran (payung, panas, angin, badai), kabar cuaca otomatis tiap pagi |
+| Keuangan | Pemasukan & pengeluaran tercatat otomatis dari chat biasa, kategori otomatis, saldo, rekap harian/bulanan, riwayat |
+| Tugas | Tugas sekali jalan atau harian, pengingat pada jam tertentu, ringkasan agenda tiap pagi |
+| Tidur | Pengingat tidur + hitungan durasi tidur sampai alarm |
+| Alarm | Alarm bangun pagi yang mengulang sampai kamu membalas `bangun`, lalu langsung memberi ringkasan pagi |
 
 
 ## 1. Isi folder
