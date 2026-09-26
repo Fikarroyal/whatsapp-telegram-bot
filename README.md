@@ -106,7 +106,7 @@ Jalankan **satu proses saja** (penjadwal pengingat ada di dalam proses yang sama
 4. Dari WhatsApp-mu, kirim `menu` ke nomor tes.
 
 ### 3.4 Pengingat di WhatsApp punya batas 24 jam
-WhatsApp hanya mengizinkan bot mengirim pesan bebas **dalam 24 jam setelah kamu terakhir membalas**. Selama kamu chat dengan bot setidaknya sekali sehari, semua pengingat berjalan normal. Kalau lebih dari 24 jam kamu diam, Meta menolak pesan bebas (kode error 131047).
+WhatsApp hanya mengizinkan bot mengirim pesan bebas **dalam 24 jam setelah kamu terakhir membalas**. Selama kamu chat dengan bot setidaknya sekali sehari, semua pengingat berjalan normal. Kalau lebih dari 24 jam kamu diam, Meta menolak pesan bebas.
 
 Solusinya: **template pesan**. Bot otomatis beralih ke template saat kena batas itu, kalau kamu mengisi `WA_TEMPLATE_NAME`.
 
